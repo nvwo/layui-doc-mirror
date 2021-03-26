@@ -1,0 +1,633 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.layui.com/doc/modules/laypage.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>分页组件文档 - Layui</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <script>
+  ;!function(){self!==parent&&(location.href="http://www.baidu.com/")}();
+  </script>
+  <link rel="stylesheet" href="../../../res.layui.com/layui/dist/css/layui.css?t=1616653625022"  media="all">
+  <link rel="stylesheet" href="../../../res.layui.com/static/css/global.css?t=1616653625022-19" media="all">
+</head>
+<body>
+
+
+
+<div class="layui-header header header-doc" spring>
+  <div class="layui-main">
+    <a class="logo" href="../../index.html">
+      <img src="../../../res.layui.com/static/images/layui/logo.png" alt="layui">
+    </a>
+    <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+    <ul class="layui-nav">
+      <li class="layui-nav-item layui-this">
+        <a href="../index.html">文档</a> 
+      </li>
+      <li class="layui-nav-item ">
+        <a href="../../demo/index.html">示例</a>
+      </li>
+      
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <!--<span class="layui-badge-dot" style="left:0; right: auto; margin: -4px 0 0 5px;"></span>--> 
+          周边
+        </a>
+        <dl class="layui-nav-child" style="left: auto; right: -22px; text-align: center;">  
+          <dd class="layui-hide-sm layui-show-xs" lay-unselect>
+            <a href="https://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">问题反馈</a>
+            <hr>
+          </dd>
+          
+          <dd lay-unselect><a href="../../alone.html" target="_blank" lay-unselect>独立组件</a></dd>
+          <dd lay-unselect><a href="http://fly.layui.com/extend/" target="_blank">扩展组件</a></dd>
+          
+          
+          <!--
+          <dd lay-unselect>
+            <a href="https://fly.layui.com/jump/txyhot/" target="_blank" id="layui-spm-event-aliyun">
+              腾讯云特惠 
+              <span class="layui-badge-dot" style="margin-top: -5px;"></span>
+            </a>
+          </dd>
+          -->
+        </dl>
+      </li>
+      
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="http://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
+      </li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+<ul class="site-dir">
+  <li><a href="#use"><cite>快速使用</cite></a></li>
+  <li><a href="#options"><cite>基础参数选项</cite> <span class="layui-badge-dot"></span></a></li>
+  <li><a href="#jump"><cite>分页的回调</cite></a></li>
+</ul>
+<div class="layui-main site-inline">
+  <div class="site-tree">
+  <!--
+  <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+    <select lay-filter="tabVersion">
+      <option value="new">2.x</option>
+      <option value="v1">1.x</option>
+    </select>
+  </div>
+  -->
+  <ul class="layui-tree">
+  
+    <li><h2>基础说明</h2></li>
+  
+    <li class="site-tree-noicon ">
+      <a href="../index.html">
+        <cite>开始使用</cite>
+        <em>Getting Started</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/infrastructure.html">
+        <cite>底层方法</cite>
+        <em>基础支撑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/element.html">
+        <cite>页面元素</cite>
+        <em>规范 / 公共类 / 属性</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/modules.html">
+        <cite>模块规范</cite>
+        <em>使用 / 扩展</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/faq.html">
+        <cite>常见问题</cite>
+        <em>FAQ</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/changelog.html">
+        <cite>更新日志</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -4px;"></span>
+        
+      </a>
+    </li>
+    
+    <li><h2>页面元素</h2></li>
+    
+    
+    <li class="site-tree-noicon ">
+      <a href="../element/layout.html">
+        <cite>布局</cite>
+        <em>栅格 / 后台布局</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/color.html">
+        <cite>颜色</cite>
+        <em>主题色设计感 / 内置背景色</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/icon.html">
+        <cite>图标</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>字体图标</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/anim.html">
+        <cite>动画</cite>
+        <em>内置 CSS3 动画</em>
+      </a>
+    </li>
+    
+    <li class="site-tree-noicon ">
+      <a href="../element/button.html">
+        <cite>按钮</cite>
+        <em>button 组</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/form.html">
+        <cite>表单</cite>
+        <em>form 元素集合</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/nav.html">
+        <cite>导航</cite>
+        <em>菜单 / 面包屑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/tab.html">
+        <cite>选项卡</cite>
+        <em>Tabs 切换</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/progress.html">
+        <cite>进度条</cite>
+        <em>progress</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/panel.html">
+        <cite>面板</cite>
+        <em>折叠 / 手风琴</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/table.html">
+        <cite>表格</cite>
+        <em>静态 table</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/badge.html">
+        <cite>徽章</cite>
+        <em>小圆点 / 小边框</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/timeline.html">
+        <cite>时间线</cite>
+        <em>timeline</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/auxiliar.html">
+        <cite>辅助</cite>
+        <em>引用 / 字段集 / 横线等</em>
+      </a>
+    </li>
+   
+    
+    <li><h2>内置模块</h2></li>
+    
+    <li class="">
+      <a href="layer.html">
+        <i class="layui-icon" style="top: 3px;">&#xe638;</i><cite>弹出层</cite>
+        <em>layer</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laydate.html">
+        <i class="layui-icon" style="top: 3px;">&#xe637;</i><cite>日期与时间选择</cite>
+        <em>laydate</em>
+      </a>
+    </li>
+    <li class="layui-this">
+      <a href="laypage.html">
+        <i class="layui-icon" style="top: 2px;">&#xe633;</i><cite>分页</cite>
+        <em>laypage</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laytpl.html">
+        <i class="layui-icon" style="top: 3px;">&#xe628;</i><cite>模板引擎</cite>
+        <em>laytpl</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="table.html">
+        <i class="layui-icon" style="top: 4px; font-size: 24px; margin-right: -4px;">&#xe62d;</i>
+        <cite>数据表格</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>table</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="form.html">
+        <i class="layui-icon" style="top: 2px;">&#xe63c;</i>
+        <cite>表单</cite>
+        <em>form</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="upload.html">
+        <i class="layui-icon" style="font-size: 18px;">&#xe62f;</i>
+        <cite>文件上传</cite>
+        <em>upload</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="transfer.html">
+        <i class="layui-icon layui-icon-transfer" style="font-size: 18px; top: 2px;"></i>
+        <cite>穿梭框</cite>
+        <em>transfer</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="tree.html">
+        <i class="layui-icon" style="top: 2px;">&#xe62e;</i>
+        <cite>树形组件</cite>
+        <em>tree</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="colorpicker.html">
+        <i class="layui-icon layui-icon-theme" style="top: 1px; font-size: 18px;"></i>
+        <cite>颜色选择器</cite>
+        <em>colorpicker</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="element.html">
+        <i class="layui-icon" style="top: 1px; font-size: 18px;">&#xe62a;</i>
+        <cite>常用元素操作</cite>
+        <em>element</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="slider.html">
+        <i class="layui-icon layui-icon-slider" style="top: 1px; font-size: 18px;"></i>
+        <cite>滑块</cite>
+        <em>slider</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="rate.html">
+        <i class="layui-icon" style="top: 1px; font-size: 22px;">&#xe67b;</i>
+        <cite>评分</cite>
+        <em>rate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="carousel.html">
+        <i class="layui-icon" style="top: 2px;">&#xe634;</i>
+        <cite>轮播</cite>
+        <em>carousel</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="flow.html">
+        <i class="layui-icon">&#xe636;</i>
+        <cite>流加载</cite>
+        <em>flow</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="util.html">
+        <i class="layui-icon">&#xe631;</i>
+        <cite>工具集</cite>
+        <em>util</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="code.html">
+        <i class="layui-icon" style="top: 1px;">&#xe635;</i>
+        <cite>代码文本行修饰</cite>
+        <em>code</em>
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <div class="site-content">
+    <h1 class="site-h1"><i class="layui-icon">&#xe633;</i> 分页模块文档 - layui.laypage</h1>
+    
+    <blockquote class="layui-elem-quote">
+      layPage 致力于提供极致的分页逻辑，既可轻松胜任异步分页，也可作为页面刷新式分页。自 layui 2.0 开始，无论是从核心代码还是API设计，layPage 都完成了一次蜕变。清爽的UI、灵活的排版，极简的调用方式，这一切的优质元素，都将毫无违和感地镶嵌在你的页面之中。
+    </blockquote>
+    <blockquote class="layui-elem-quote site-text">
+      模块加载名称：<em>laypage</em>
+    </blockquote>
+    
+    
+
+<div style="margin: 15px 0; text-align: center; background-color: #F2F2F2;">
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="9841027833"></ins>
+</div>
+
+
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="use">快速使用</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>laypage 的使用非常简单，指向一个用于存放分页的容器，通过服务端得到一些初始值，即可完成分页渲染：</p>
+      <pre class="layui-code" lay-title="在 layui 模块中使用">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;layPage快速使用&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/build/layui.css&quot; media=&quot;all&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 
+&lt;div id="test1">&lt;/div>
+ 
+&lt;script src=&quot;/static/build/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+layui.use(&#x27;laypage&#x27;, function(){
+  var laypage = layui.laypage;
+  
+  //执行一个laypage实例
+  laypage.render({
+    elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: 50 //数据总数，从服务端得到
+  });
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+    </div>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="options">基础参数选项</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>通过核心方法：<em>laypage.render(options)</em> 来设置基础参数。由于使用非常简单，本篇直接罗列核心接口的参数选项</p>
+      <table class="layui-table">
+        <colgroup>
+          <col width="120">
+          <col>
+          <col width="120">
+          <col width="200">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>参数选项</th>
+            <th>说明</th>
+            <th>类型</th>
+            <th>默认值</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr>
+            <td>elem</td>
+            <td>
+              指向存放分页的容器，值可以是容器ID、DOM对象。如：
+              <br>1. elem: 'id' <em>注意：这里不能加 # 号</em>
+              <br>2. elem: document.getElementById('id')
+            </td>
+            <td>String/Object</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>count</td>
+            <td>数据总数。一般通过服务端得到</td>
+            <td>Number</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>limit</td>
+            <td>每页显示的条数。laypage将会借助 count 和 limit 计算出分页数。</td>
+            <td>Number</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>limits</td>
+            <td>每页条数的选择项。如果 layout 参数开启了 limit，则会出现每页条数的select选择框</td>
+            <td>Array</td>
+            <td>[10, 20, 30, 40, 50]</td>
+          </tr>
+          <tr>
+            <td>curr</td>
+            <td>
+              起始页。一般用于刷新类型的跳页以及HASH跳页。如：
+              <pre class="layui-code">
+//开启location.hash的记录
+laypage.render({
+  elem: 'test1'
+  ,count: 500
+  ,curr: location.hash.replace('#!fenye=', '') //获取起始页
+  ,hash: 'fenye' //自定义hash值
+});          
+              </pre>
+            </td>
+            <td>Number</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>groups</td>
+            <td>连续出现的页码个数</td>
+            <td>Number</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>prev</td>
+            <td>自定义“上一页”的内容，支持传入普通文本和HTML</td>
+            <td>String</td>
+            <td>上一页</td>
+          </tr>
+          <tr>
+            <td>next</td>
+            <td>自定义“下一页”的内容，同上</td>
+            <td>String</td>
+            <td>下一页</td>
+          </tr>
+          <tr>
+            <td>first</td>
+            <td>自定义“首页”的内容，同上</td>
+            <td>String</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>last</td>
+            <td>自定义“尾页”的内容，同上</td>
+            <td>String</td>
+            <td>总页数值</td>
+          </tr>
+          <tr>
+            <td>layout</td>
+            <td>自定义排版。可选值有：<em>count</em>（总条目输区域）、<em>prev</em>（上一页区域）、<em>page</em>（分页区域）、<em>next</em>（下一页区域）、<em>limit</em>（条目选项区域）、<em>refresh</em>（页面刷新区域。注意：layui 2.3.0 新增） 、<em>skip</em>（快捷跳页区域）</td>
+            <td>Array</td>
+            <td>['prev', 'page', 'next']</td>
+          </tr>
+           <tr>
+            <td>theme</td>
+            <td>
+              自定义主题。支持传入：<em>颜色值</em>，或<em>任意普通字符</em>。如：
+              <br>1. theme: '#c00'
+              <br>2. theme: 'xxx' //将会生成 class="layui-laypage-xxx" 的CSS类，以便自定义主题
+            </td>
+            <td>String</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>hash</td>
+            <td>开启location.hash，并自定义 hash 值。如果开启，在触发分页时，会自动对url追加：<em>#!hash值={curr}</em> 利用这个，可以在页面载入时就定位到指定页</td>
+            <td>String/Boolean</td>
+            <td>false</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="jump">jump - 切换分页的回调</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>当分页被切换时触发，函数返回两个参数：<em>obj</em>（当前分页的所有选项值）、first（是否首次，一般用于初始加载的判断）</p>
+      <pre class="layui-code">
+laypage.render({
+  elem: 'test1'
+  ,count: 70 //数据总数，从服务端得到
+  ,jump: function(obj, first){
+    //obj包含了当前分页的所有参数，比如：
+    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+    console.log(obj.limit); //得到每页显示的条数
+    
+    //首次不执行
+    if(!first){
+      //do something
+    }
+  }
+});
+      </pre>
+    </div>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="">结束</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>正如你看到对的，laypage 只负责分页本身的逻辑，具体的数据请求与渲染需要另外去完成。laypage 不仅能应用在一般的异步分页上，还可直接对一段已知数据进行分页展现，更可以取代传统的超链接分页，如果你无需考虑SEO的话（因为 laypage 的分页是JS动态生成的）。</p>
+    </div>
+    
+    
+    
+    <div class="layui-elem-quote">
+  <p>layui - 用心与你沟通</p>
+</div>
+    
+  </div>
+</div>
+  
+<div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <p>&copy; 2021 <a href="../../index.html">layui.com</a> MIT license</p>
+    <p>
+      <a href="../../about/disclaimer.html" target="_blank">免责声明</a>
+      <a href="../../about/relatedlinks.html" target="_blank">友链</a>
+      <a href="javascript:;"  site-event="weixinmp">公众号</a>
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+    <div class="site-union">
+      <p class="site-union-desc">
+        <span>
+          感谢以下平台提供云加速支持
+        </span>
+      </p>
+      <p>    
+        <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+          <img src="../../../res.layui.com/static/images/other/upyun.png?t=1" alt="upyun">
+        </a>    
+        <a href="https://www.maoyun.com/?from=layui" target="_blank" rel="nofollow" sponsor="maoyun">
+          <img src="../../../cdn.layui.com/upload/2019_5/168_1559291577683_9348.png" alt="maoyun">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+window.global = {
+  pageType: 'doc'
+  ,preview: function(){
+    var preview = document.getElementById('LAY_preview');
+    return preview ? preview.innerHTML : '';
+  }()
+};
+</script>
+<script async src="../../../pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+ 
+<script src="../../../res.layui.com/layui/dist/layui.js?t=1616653625022" charset="utf-8"></script>
+<script>
+layui.config({
+  base: '../../../res.layui.com/static/lay/modules/layui/'
+  ,version: '1616653625022'
+}).use('global');
+</script>
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../hm.baidu.com/hmd4f2.js?d214947968792b839fd669a4decaaffc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+
+<!-- Mirrored from www.layui.com/doc/modules/laypage.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:09 GMT -->
+</html>

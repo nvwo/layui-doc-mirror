@@ -1,0 +1,946 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.layui.com/doc/element/layout.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>Layui 栅格系统与后台框架布局</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <script>
+  ;!function(){self!==parent&&(location.href="http://www.baidu.com/")}();
+  </script>
+  <link rel="stylesheet" href="../../../res.layui.com/layui/dist/css/layui.css?t=1616653624947"  media="all">
+  <link rel="stylesheet" href="../../../res.layui.com/static/css/global.css?t=1616653624947-19" media="all">
+</head>
+<body>
+
+
+
+<div class="layui-header header header-doc" spring>
+  <div class="layui-main">
+    <a class="logo" href="../../index.html">
+      <img src="../../../res.layui.com/static/images/layui/logo.png" alt="layui">
+    </a>
+    <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+    <ul class="layui-nav">
+      <li class="layui-nav-item layui-this">
+        <a href="../index.html">文档</a> 
+      </li>
+      <li class="layui-nav-item ">
+        <a href="../../demo/index.html">示例</a>
+      </li>
+      
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <!--<span class="layui-badge-dot" style="left:0; right: auto; margin: -4px 0 0 5px;"></span>--> 
+          周边
+        </a>
+        <dl class="layui-nav-child" style="left: auto; right: -22px; text-align: center;">  
+          <dd class="layui-hide-sm layui-show-xs" lay-unselect>
+            <a href="https://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">问题反馈</a>
+            <hr>
+          </dd>
+          
+          <dd lay-unselect><a href="../../alone.html" target="_blank" lay-unselect>独立组件</a></dd>
+          <dd lay-unselect><a href="http://fly.layui.com/extend/" target="_blank">扩展组件</a></dd>
+          
+          
+          <!--
+          <dd lay-unselect>
+            <a href="https://fly.layui.com/jump/txyhot/" target="_blank" id="layui-spm-event-aliyun">
+              腾讯云特惠 
+              <span class="layui-badge-dot" style="margin-top: -5px;"></span>
+            </a>
+          </dd>
+          -->
+        </dl>
+      </li>
+      
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="http://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
+      </li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+<ul class="site-dir">
+  <li><a href="#grid"><cite>栅格系统</cite></a></li>
+  <ul style="margin-left: 15px;">
+    <li><a href="#grid-rule">栅格布局规则</a></li>
+    <li><a href="#grid-resp">响应式规则</a></li>
+    <li><a href="#grid-class">响应式公共类</a></li>
+    <li><a href="#grid-container">布局容器</a></li>
+    <li><a href="#grid-space">列间距 <span class="layui-badge-dot"></span></a></li>
+    <li><a href="#grid-offset">列偏移</a></li>
+    <li><a href="#grid-nesting">栅格嵌套</a></li>
+    <li><a href="#grid-iepatch">IE8/9兼容方案</a></li>
+  </ul>
+  
+  <li><a href="#admin"><cite>管理界面布局</cite></a></li>
+</ul>
+<div class="layui-main site-inline">
+  <div class="site-tree">
+  <!--
+  <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+    <select lay-filter="tabVersion">
+      <option value="new">2.x</option>
+      <option value="v1">1.x</option>
+    </select>
+  </div>
+  -->
+  <ul class="layui-tree">
+  
+    <li><h2>基础说明</h2></li>
+  
+    <li class="site-tree-noicon ">
+      <a href="../index.html">
+        <cite>开始使用</cite>
+        <em>Getting Started</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/infrastructure.html">
+        <cite>底层方法</cite>
+        <em>基础支撑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/element.html">
+        <cite>页面元素</cite>
+        <em>规范 / 公共类 / 属性</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/modules.html">
+        <cite>模块规范</cite>
+        <em>使用 / 扩展</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/faq.html">
+        <cite>常见问题</cite>
+        <em>FAQ</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/changelog.html">
+        <cite>更新日志</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -4px;"></span>
+        
+      </a>
+    </li>
+    
+    <li><h2>页面元素</h2></li>
+    
+    
+    <li class="site-tree-noicon layui-this">
+      <a href="layout.html">
+        <cite>布局</cite>
+        <em>栅格 / 后台布局</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="color.html">
+        <cite>颜色</cite>
+        <em>主题色设计感 / 内置背景色</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="icon.html">
+        <cite>图标</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>字体图标</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="anim.html">
+        <cite>动画</cite>
+        <em>内置 CSS3 动画</em>
+      </a>
+    </li>
+    
+    <li class="site-tree-noicon ">
+      <a href="button.html">
+        <cite>按钮</cite>
+        <em>button 组</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="form.html">
+        <cite>表单</cite>
+        <em>form 元素集合</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="nav.html">
+        <cite>导航</cite>
+        <em>菜单 / 面包屑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="tab.html">
+        <cite>选项卡</cite>
+        <em>Tabs 切换</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="progress.html">
+        <cite>进度条</cite>
+        <em>progress</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="panel.html">
+        <cite>面板</cite>
+        <em>折叠 / 手风琴</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="table.html">
+        <cite>表格</cite>
+        <em>静态 table</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="badge.html">
+        <cite>徽章</cite>
+        <em>小圆点 / 小边框</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="timeline.html">
+        <cite>时间线</cite>
+        <em>timeline</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="auxiliar.html">
+        <cite>辅助</cite>
+        <em>引用 / 字段集 / 横线等</em>
+      </a>
+    </li>
+   
+    
+    <li><h2>内置模块</h2></li>
+    
+    <li class="">
+      <a href="../modules/layer.html">
+        <i class="layui-icon" style="top: 3px;">&#xe638;</i><cite>弹出层</cite>
+        <em>layer</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/laydate.html">
+        <i class="layui-icon" style="top: 3px;">&#xe637;</i><cite>日期与时间选择</cite>
+        <em>laydate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/laypage.html">
+        <i class="layui-icon" style="top: 2px;">&#xe633;</i><cite>分页</cite>
+        <em>laypage</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/laytpl.html">
+        <i class="layui-icon" style="top: 3px;">&#xe628;</i><cite>模板引擎</cite>
+        <em>laytpl</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/table.html">
+        <i class="layui-icon" style="top: 4px; font-size: 24px; margin-right: -4px;">&#xe62d;</i>
+        <cite>数据表格</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>table</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/form.html">
+        <i class="layui-icon" style="top: 2px;">&#xe63c;</i>
+        <cite>表单</cite>
+        <em>form</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/upload.html">
+        <i class="layui-icon" style="font-size: 18px;">&#xe62f;</i>
+        <cite>文件上传</cite>
+        <em>upload</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/transfer.html">
+        <i class="layui-icon layui-icon-transfer" style="font-size: 18px; top: 2px;"></i>
+        <cite>穿梭框</cite>
+        <em>transfer</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="../modules/tree.html">
+        <i class="layui-icon" style="top: 2px;">&#xe62e;</i>
+        <cite>树形组件</cite>
+        <em>tree</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="../modules/colorpicker.html">
+        <i class="layui-icon layui-icon-theme" style="top: 1px; font-size: 18px;"></i>
+        <cite>颜色选择器</cite>
+        <em>colorpicker</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/element.html">
+        <i class="layui-icon" style="top: 1px; font-size: 18px;">&#xe62a;</i>
+        <cite>常用元素操作</cite>
+        <em>element</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/slider.html">
+        <i class="layui-icon layui-icon-slider" style="top: 1px; font-size: 18px;"></i>
+        <cite>滑块</cite>
+        <em>slider</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/rate.html">
+        <i class="layui-icon" style="top: 1px; font-size: 22px;">&#xe67b;</i>
+        <cite>评分</cite>
+        <em>rate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/carousel.html">
+        <i class="layui-icon" style="top: 2px;">&#xe634;</i>
+        <cite>轮播</cite>
+        <em>carousel</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="../modules/flow.html">
+        <i class="layui-icon">&#xe636;</i>
+        <cite>流加载</cite>
+        <em>flow</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/util.html">
+        <i class="layui-icon">&#xe631;</i>
+        <cite>工具集</cite>
+        <em>util</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/code.html">
+        <i class="layui-icon" style="top: 1px;">&#xe635;</i>
+        <cite>代码文本行修饰</cite>
+        <em>code</em>
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <div class="site-content">
+    <h1 class="site-h1">栅格系统与后台布局</h1>
+    <blockquote class="layui-elem-quote">
+      如你所愿，在 layui 2.0 的版本中，我们加入了强劲的栅格系统和常见的管理系统布局方案，这意味着你可以采用 layui 排版你的响应式网站和后台管理系统的界面了。layui 的栅格采用业界比较常见的 12 等分规则，内置手机、平板、PC 桌面中大型屏幕的多终端适配处理，最低能支持到 ie8。而你应当更欣喜的是，layui 终于开放了它经典的管理系统布局方案，快速搭建一个属于你的管理系统将变得十分轻松自如。
+    </blockquote>
+    
+    
+
+<div style="margin: 15px 0; text-align: center; background-color: #F2F2F2;">
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="9841027833"></ins>
+</div>
+
+
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="grid">栅格系统</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>为了丰富网页布局，简化 HTML/CSS 代码的耦合，并提升多终端的适配能力，layui 在 2.0 的版本中引进了自己的一套具备响应式能力的栅格系统。我们将容器进行了 12 等分，预设了 4*12 种 CSS 排列类，它们在移动设备、平板、桌面中/大尺寸四种不同的屏幕下发挥着各自的作用。</p>
+      
+      <a name="grid-rule"></a>
+      <p>一、栅格布局规则：</p>
+      <hr>
+      <table class="layui-table">
+        <colgroup>
+          <col width="50">
+          <col>
+        </colgroup>
+        <tbody>
+          <tr>
+            <td>1.</td>
+            <td>采用 <em>layui-row</em> 来定义行，如：<em>&lt;div class="layui-row">&lt;/div></em> </td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td>
+              采用类似 <em>layui-col-md*</em> 这样的预设类来定义一组列（column），且放在行（row）内。其中：
+              <div class="layui-text">
+                <ul>
+                  <li>变量<em>md</em> 代表的是不同屏幕下的标记（可选值见下文）</li>
+                  <li>变量<em>*</em> 代表的是该列所占用的12等分数（如6/12），可选值为 1 - 12</li>
+                  <li>如果多个列的“等分数值”总和等于12，则刚好满行排列。如果大于12，多余的列将自动另起一行。</li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td>列可以同时出现最多四种不同的组合，分别是：<em>xs</em>（超小屏幕，如手机）、<em>sm</em>（小屏幕，如平板）、<em>md</em>（桌面中等屏幕）、<em>lg</em>（桌面大型屏幕），以呈现更加动态灵活的布局。</td>
+          </tr>
+          <tr>
+            <td>4.</td>
+            <td>可对列追加类似 <em>layui-col-space5</em>、 <em>layui-col-md-offset3</em> 这样的预设类来定义列的间距和偏移。</td>
+          </tr>
+          <tr>
+            <td>5.</td>
+            <td>最后，在列（column）元素中放入你自己的任意元素填充内容，完成布局！</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p>示例（这里只是大致列举两个，更多实例请前往 <a href="../../demo/grid.html" target="_blank">示例-栅格</a> 查看）</p>
+      
+      <div class="layui-row">
+        <div class="layui-col-md9">
+          <div class="grid-demo">你的内容 9/12</div>
+        </div>
+        <div class="layui-col-md3">
+          <div class="grid-demo grid-demo-bg1">你的内容 3/12</div>
+        </div>
+      </div>
+      
+      <br>
+      
+      <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+          <div class="grid-demo grid-demo-bg1">50% | 33.33% | 33.33%</div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+          <div class="grid-demo">50% | 66.67% | 33.33%</div>
+        </div>
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+          <div class="grid-demo grid-demo-bg1">33.33% | 100% | 33.33%</div>
+        </div>
+        <div class="layui-col-xs4 layui-col-sm7 layui-col-md8">
+          <div class="grid-demo grid-demo-bg2">33.33% | 50% | 66.67%</div>
+        </div>
+        <div class="layui-col-xs4 layui-col-sm5 layui-col-md4">
+          <div class="grid-demo">33.33% | 50% | 33.33%</div>
+        </div>
+      </div>
+      
+      <pre class="layui-code" lay-title="示例">
+&lt;div class="layui-container"&gt;  
+  常规布局（以中型屏幕桌面为例）：
+  &lt;div class=&quot;layui-row&quot;&gt;
+    &lt;div class=&quot;layui-col-md9&quot;&gt;
+      你的内容 9/12
+    &lt;/div&gt;
+    &lt;div class=&quot;layui-col-md3&quot;&gt;
+      你的内容 3/12
+    &lt;/div&gt;
+  &lt;/div&gt;
+   
+  移动设备、平板、桌面端的不同表现：
+  &lt;div class=&quot;layui-row&quot;&gt;
+    &lt;div class=&quot;layui-col-xs6 layui-col-sm6 layui-col-md4&quot;&gt;
+      移动：6/12 | 平板：6/12 | 桌面：4/12
+    &lt;/div&gt;
+    &lt;div class=&quot;layui-col-xs6 layui-col-sm6 layui-col-md4&quot;&gt;
+      移动：6/12 | 平板：6/12 | 桌面：4/12
+    &lt;/div&gt;
+    &lt;div class=&quot;layui-col-xs4 layui-col-sm12 layui-col-md4&quot;&gt;
+      移动：4/12 | 平板：12/12 | 桌面：4/12
+    &lt;/div&gt;
+    &lt;div class=&quot;layui-col-xs4 layui-col-sm7 layui-col-md8&quot;&gt;
+      移动：4/12 | 平板：7/12 | 桌面：8/12
+    &lt;/div&gt;
+    &lt;div class=&quot;layui-col-xs4 layui-col-sm5 layui-col-md4&quot;&gt;
+      移动：4/12 | 平板：5/12 | 桌面：4/12
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+      
+      <a name="grid-resp"></a>
+      <br>
+      <p>二、响应式规则：</p>
+      <hr>
+      <p>栅格的响应式能力，得益于CSS3媒体查询（Media Queries）的强力支持，从而针对四类不同尺寸的屏幕，进行相应的适配处理</p>
+      <table class="layui-table">
+        <colgroup>
+          <col width="160">
+        </colgroup>
+        <thead>
+          <th></th>
+          <th>超小屏幕<br>(手机<768px)</th>
+          <th>小屏幕<br>(平板≥768px)</th>
+          <th>中等屏幕<br>(桌面≥992px)</th>
+          <th>大型屏幕<br>(桌面≥1200px)</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>.layui-container</em>的值</td>
+            <td>auto</td>
+            <td>750px</td>
+            <td>970px</td>
+            <td>1170px</td>
+          </tr>
+          <tr>
+            <td>标记</td>
+            <td>xs</td>
+            <td>sm</td>
+            <td>md</td>
+            <td>lg</td>
+          </tr>
+          <tr>
+            <td>列对应类<br>* 为1-12的等分数值</td>
+            <td>layui-col-xs*</td>
+            <td>layui-col-sm*</td>
+            <td>layui-col-md*</td>
+            <td>layui-col-lg*</td>
+          </tr>
+          <tr>
+            <td>总列数</td>
+            <td colspan="4">12</td>
+          </tr>
+          <tr>
+            <td>响应行为</td>
+            <td>始终按设定的比例水平排列</td>
+            <td colspan="3">在当前屏幕下水平排列，如果屏幕大小低于临界值则堆叠排列</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <a name="grid-class"></a>
+      <br>
+      <p>三、响应式公共类：</p>
+      <hr>
+       <table class="layui-table">
+        <colgroup>
+          <col width="150">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>类名（class）</th>
+            <th>说明</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr>
+            <td>layui-show-*-block</td>
+            <td class="layui-text">定义不同设备下的 display: block; * 可选值有：xs、sm、md、lg</td>
+          </tr>
+          <tr>
+            <td>layui-show-*-inline</td>
+            <td>定义不同设备下的 display: inline; * 可选值同上</td>
+          </tr>
+          <tr>
+            <td>layui-show-*-inline-block</td>
+            <td>定义不同设备下的 display: inline-block; * 可选值同上</td>
+          </tr>
+          <tr>
+            <td>layui-hide-*</td>
+            <td>定义不同设备下的隐藏类，即： display: none; * 可选值同上</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <a name="grid-container"></a>
+      <br>
+      <p>四、布局容器：</p>
+      <hr>
+      <p>将栅格放入一个带有 <em>class="layui-container"</em> 的特定的容器中，以便在小屏幕以上的设备中固定宽度，让列可控。</p>
+      <pre class="layui-code">
+&lt;div class=&quot;layui-container&quot;&gt;
+  &lt;div class=&quot;layui-row&quot;&gt;
+    ……
+  &lt;/div&gt;
+&lt;/div&gt;      
+      </pre>  
+      <p>当然，你还可以不固定容器宽度。将栅格或其它元素放入一个带有 <em>class="layui-fluid"</em> 的容器中，那么宽度将不会固定，而是 100% 适应</p>
+      <pre class="layui-code">
+&lt;div class=&quot;layui-fluid&quot;&gt;
+  ……
+&lt;/div&gt;      
+      </pre> 
+      
+      <a name="grid-space"></a>
+      <br>
+      <p>五、列间距：</p>
+      <hr>
+      <table class="layui-table">
+        <colgroup>
+          <col width="200">
+          <col>
+        </colgroup>
+        <tbody>
+          <tr>
+            <td colspan="2">通过“列间距”的预设类，来设定列之间的间距。且一行中最左的列不会出现左边距，最右的列不会出现右边距。列间距在保证排版美观的同时，还可以进一步保证分列的宽度精细程度。我们结合网页常用的边距，预设了 12 种不同尺寸的边距，分别是：</td>
+          </tr>
+          <tr>
+            <td>
+              layui-col-space1
+              <br>layui-col-space2
+              <br>layui-col-space4
+              <br>layui-col-space5
+              <br>layui-col-space6
+              <br>layui-col-space8
+              <br>layui-col-space10
+              <br>layui-col-space12
+              <br>layui-col-space14
+              <br>layui-col-space15
+              <br>layui-col-space16
+              <br>layui-col-space18
+              <br>layui-col-space20
+              <br>layui-col-space22
+              <br>layui-col-space24
+              <br>layui-col-space25
+              <br>layui-col-space26
+              <br>layui-col-space28
+              <br>layui-col-space30
+            </td>
+            <td>支持列之间为 1px-30px 区间的所有双数间隔，以及 1px、5px、15px、25px 的单数间隔</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>下面是一个简单的例子，列间距为10px：</p>
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md4">
+          <div class="grid-demo grid-demo-bg1">1/3</div>
+        </div>
+        <div class="layui-col-md4">
+          <div class="grid-demo">1/3</div>
+        </div>
+        <div class="layui-col-md4">
+          <div class="grid-demo grid-demo-bg1">1/3</div>
+        </div>
+      </div>
+      <pre class="layui-code">
+&lt;div class=&quot;layui-row layui-col-space10&quot;&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    1/3
+  &lt;/div&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    1/3
+  &lt;/div&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    1/3
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+      <p>如果需要的间距高于30px（一般不常见），请采用偏移，下文继续讲解</p>
+      
+      <a name="grid-offset"></a>
+      <br>
+      <p>六、列偏移：</p>
+      <hr>
+      <p>
+        对列追加 类似 <em>layui-col-md-offset*</em> 的预设类，从而让列向右偏移。其中 <em>*</em> 号代表的是偏移占据的列数，可选中为 1 - 12。
+        <br>如：<em>layui-col-md-offset3</em>，即代表在“中型桌面屏幕”下，让该列向右偏移 3 个列宽度
+      </p>
+      <p>下面是一个采用「列偏移」机制让两个列左右对齐的实例</p>
+      <div class="layui-row">
+        <div class="layui-col-md4">
+          <div class="grid-demo grid-demo-bg1">4/12</div>
+        </div>
+        <div class="layui-col-md4 layui-col-md-offset4">
+          <div class="grid-demo">偏移4列，从而在最右</div>
+        </div>
+      </div>
+      <pre class="layui-code">
+&lt;div class=&quot;layui-row&quot;&gt;
+  &lt;div class=&quot;layui-col-md4&quot;&gt;
+    4/12
+  &lt;/div&gt;
+  &lt;div class=&quot;layui-col-md4 layui-col-md-offset4&quot;&gt;
+    偏移4列，从而在最右
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+      <p>请注意，列偏移可针对不同屏幕的标准进行设定，比如上述的例子，只会在桌面屏幕下有效，当低于桌面屏幕的规定的临界值，就会堆叠排列。</p>
+      
+      <a name="grid-nesting"></a>
+      <br>
+      <p>七、栅格嵌套：</p>
+      <hr>
+      <p>理论上，你可以对栅格进行无穷层次的嵌套，这更加增强了栅格的表现能力。而嵌套的使用非常简单。在列元素（<em>layui-col-md*</em>）中插入一个行元素（<em>layui-row</em>），即可完成嵌套。下面是一个简单的例子：</p>
+      <div class="layui-row layui-col-space5">
+        <div class="layui-col-md5">
+          <div class="layui-row grid-demo">
+            <div class="layui-col-md3">
+              <div class="grid-demo grid-demo-bg1">内部列</div>
+            </div>
+            <div class="layui-col-md9">
+              <div class="grid-demo grid-demo-bg2">内部列</div>
+            </div>
+            <div class="layui-col-md12">
+              <div class="grid-demo grid-demo-bg3">内部列</div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md7">
+          <div class="layui-row grid-demo grid-demo-bg1">
+            <div class="layui-col-md12">
+              <div class="grid-demo">内部列</div>
+            </div>
+            <div class="layui-col-md9">
+              <div class="grid-demo grid-demo-bg2">内部列</div>
+            </div>
+            <div class="layui-col-md3">
+              <div class="grid-demo grid-demo-bg3">内部列</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre class="layui-code">
+&lt;div class=&quot;layui-row layui-col-space5&quot;&gt;
+  &lt;div class=&quot;layui-col-md5&quot;&gt;
+    &lt;div class=&quot;layui-row grid-demo&quot;&gt;
+      &lt;div class=&quot;layui-col-md3&quot;&gt;
+        内部列
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-col-md9&quot;&gt;
+        内部列
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-col-md12&quot;&gt;
+        内部列
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;layui-col-md7&quot;&gt;
+    &lt;div class=&quot;layui-row grid-demo grid-demo-bg1&quot;&gt;
+      &lt;div class=&quot;layui-col-md12&quot;&gt;
+        内部列
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-col-md9&quot;&gt;
+        内部列
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-col-md3&quot;&gt;
+        内部列
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+      <a name="grid-iepatch"></a>
+      <br>
+      <p>八、让IE8/9兼容栅格：</p>
+      <hr>
+      <p>事实上IE8和IE9并不支持媒体查询（Media Queries），但你可以使用下面的补丁完美兼容！该补丁来自于开源社区：</p>
+      <pre class="layui-code">
+&lt;!-- 让IE8/9支持媒体查询，从而兼容栅格 --&gt;
+&lt;!--[if lt IE 9]&gt;
+  &lt;script src=&quot;https://cdn.staticfile.org/html5shiv/r29/html5.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;
+&lt;![endif]--&gt;
+      </pre>
+      <p>将上述代码放入你页面 <em>&lt;body&gt;</em> 标签内的任意位置</p>
+    </div>
+    
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="admin">管理系统界面布局</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>layui 之所以赢得如此多人的青睐，更多是在于它“前后界面兼备”的能力。既可编织出绚丽的前台页面，又可满足繁杂的管理系统的界面相关功能需求。layui 致力于让每一位开发者都能轻松搭建自己的管理界面。下面是 layui 提供的一个现场的方案，你可以前往示例页面：<a href="../../demo/layuiAdmin.html" target="_blank">预览布局效果</a></p>
+      <pre class="layui-code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;
+  &lt;title&gt;layout 管理系统大布局 - Layui&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;../src/css/layui.css&quot;&gt;
+&lt;/head&gt;
+&lt;body class="layui-layout-body"&gt;
+&lt;div class=&quot;layui-layout layui-layout-admin&quot;&gt;
+  &lt;div class=&quot;layui-header&quot;&gt;
+    &lt;div class=&quot;layui-logo&quot;&gt;layui 管理布局&lt;/div&gt;
+    &lt;!-- 头部区域（可配合layui已有的水平导航） --&gt;
+    &lt;ul class=&quot;layui-nav layui-layout-left&quot;&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;控制台&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;商品管理&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;用户&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;
+        &lt;a href=&quot;javascript:;&quot;&gt;其它系统&lt;/a&gt;
+        &lt;dl class=&quot;layui-nav-child&quot;&gt;
+          &lt;dd&gt;&lt;a href=&quot;&quot;&gt;邮件管理&lt;/a&gt;&lt;/dd&gt;
+          &lt;dd&gt;&lt;a href=&quot;&quot;&gt;消息管理&lt;/a&gt;&lt;/dd&gt;
+          &lt;dd&gt;&lt;a href=&quot;&quot;&gt;授权管理&lt;/a&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class=&quot;layui-nav layui-layout-right&quot;&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;
+        &lt;a href=&quot;javascript:;&quot;&gt;
+          &lt;img src=&quot;http://t.cn/RCzsdCq&quot; class=&quot;layui-nav-img&quot;&gt;
+          贤心
+        &lt;/a&gt;
+        &lt;dl class=&quot;layui-nav-child&quot;&gt;
+          &lt;dd&gt;&lt;a href=&quot;&quot;&gt;基本资料&lt;/a&gt;&lt;/dd&gt;
+          &lt;dd&gt;&lt;a href=&quot;&quot;&gt;安全设置&lt;/a&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;退了&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;layui-side layui-bg-black&quot;&gt;
+    &lt;div class=&quot;layui-side-scroll&quot;&gt;
+      &lt;!-- 左侧导航区域（可配合layui已有的垂直导航） --&gt;
+      &lt;ul class=&quot;layui-nav layui-nav-tree&quot;  lay-filter=&quot;test&quot;&gt;
+        &lt;li class=&quot;layui-nav-item layui-nav-itemed&quot;&gt;
+          &lt;a class=&quot;&quot; href=&quot;javascript:;&quot;&gt;所有商品&lt;/a&gt;
+          &lt;dl class=&quot;layui-nav-child&quot;&gt;
+            &lt;dd&gt;&lt;a href=&quot;javascript:;&quot;&gt;列表一&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=&quot;javascript:;&quot;&gt;列表二&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=&quot;javascript:;&quot;&gt;列表三&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=&quot;&quot;&gt;超链接&lt;/a&gt;&lt;/dd&gt;
+          &lt;/dl&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;layui-nav-item&quot;&gt;
+          &lt;a href=&quot;javascript:;&quot;&gt;解决方案&lt;/a&gt;
+          &lt;dl class=&quot;layui-nav-child&quot;&gt;
+            &lt;dd&gt;&lt;a href=&quot;javascript:;&quot;&gt;列表一&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=&quot;javascript:;&quot;&gt;列表二&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=&quot;&quot;&gt;超链接&lt;/a&gt;&lt;/dd&gt;
+          &lt;/dl&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;云市场&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;layui-nav-item&quot;&gt;&lt;a href=&quot;&quot;&gt;发布商品&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;layui-body&quot;&gt;
+    &lt;!-- 内容主体区域 --&gt;
+    &lt;div style=&quot;padding: 15px;&quot;&gt;内容主体区域&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;layui-footer&quot;&gt;
+    &lt;!-- 底部固定区域 --&gt;
+    © layui.com - 底部固定区域
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script src=&quot;../src/layui.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+//JavaScript代码区域
+layui.use(&#x27;element&#x27;, function(){
+  var element = layui.element;
+  
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+      <p></p>
+    </div> 
+ 
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="docend">结语</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p></p>
+    </div>
+    
+    <div class="layui-elem-quote">
+  <p>layui - 用心与你沟通</p>
+</div>
+    
+  </div>
+</div>
+  
+<div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <p>&copy; 2021 <a href="../../index.html">layui.com</a> MIT license</p>
+    <p>
+      <a href="../../about/disclaimer.html" target="_blank">免责声明</a>
+      <a href="../../about/relatedlinks.html" target="_blank">友链</a>
+      <a href="javascript:;"  site-event="weixinmp">公众号</a>
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+    <div class="site-union">
+      <p class="site-union-desc">
+        <span>
+          感谢以下平台提供云加速支持
+        </span>
+      </p>
+      <p>    
+        <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+          <img src="../../../res.layui.com/static/images/other/upyun.png?t=1" alt="upyun">
+        </a>    
+        <a href="https://www.maoyun.com/?from=layui" target="_blank" rel="nofollow" sponsor="maoyun">
+          <img src="../../../cdn.layui.com/upload/2019_5/168_1559291577683_9348.png" alt="maoyun">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+window.global = {
+  pageType: 'doc'
+  ,preview: function(){
+    var preview = document.getElementById('LAY_preview');
+    return preview ? preview.innerHTML : '';
+  }()
+};
+</script>
+<script async src="../../../pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+ 
+<script src="../../../res.layui.com/layui/dist/layui.js?t=1616653624947" charset="utf-8"></script>
+<script>
+layui.config({
+  base: '../../../res.layui.com/static/lay/modules/layui/'
+  ,version: '1616653624947'
+}).use('global');
+</script>
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../hm.baidu.com/hmd4f2.js?d214947968792b839fd669a4decaaffc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+
+<!-- Mirrored from www.layui.com/doc/element/layout.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:07 GMT -->
+</html>

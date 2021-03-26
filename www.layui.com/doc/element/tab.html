@@ -1,0 +1,708 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.layui.com/doc/element/tab.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>Tab选项卡 - 页面元素 - Layui</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <script>
+  ;!function(){self!==parent&&(location.href="http://www.baidu.com/")}();
+  </script>
+  <link rel="stylesheet" href="../../../res.layui.com/layui/dist/css/layui.css?t=1616653625022"  media="all">
+  <link rel="stylesheet" href="../../../res.layui.com/static/css/global.css?t=1616653625022-19" media="all">
+</head>
+<body>
+
+
+
+<div class="layui-header header header-doc" spring>
+  <div class="layui-main">
+    <a class="logo" href="../../index.html">
+      <img src="../../../res.layui.com/static/images/layui/logo.png" alt="layui">
+    </a>
+    <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+    <ul class="layui-nav">
+      <li class="layui-nav-item layui-this">
+        <a href="../index.html">文档</a> 
+      </li>
+      <li class="layui-nav-item ">
+        <a href="../../demo/index.html">示例</a>
+      </li>
+      
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <!--<span class="layui-badge-dot" style="left:0; right: auto; margin: -4px 0 0 5px;"></span>--> 
+          周边
+        </a>
+        <dl class="layui-nav-child" style="left: auto; right: -22px; text-align: center;">  
+          <dd class="layui-hide-sm layui-show-xs" lay-unselect>
+            <a href="https://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">问题反馈</a>
+            <hr>
+          </dd>
+          
+          <dd lay-unselect><a href="../../alone.html" target="_blank" lay-unselect>独立组件</a></dd>
+          <dd lay-unselect><a href="http://fly.layui.com/extend/" target="_blank">扩展组件</a></dd>
+          
+          
+          <!--
+          <dd lay-unselect>
+            <a href="https://fly.layui.com/jump/txyhot/" target="_blank" id="layui-spm-event-aliyun">
+              腾讯云特惠 
+              <span class="layui-badge-dot" style="margin-top: -5px;"></span>
+            </a>
+          </dd>
+          -->
+        </dl>
+      </li>
+      
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="http://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
+      </li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+<ul class="site-dir">
+  <li><a href="#default"><cite>常规用法</cite></a></li>
+  <li><a href="#brief"><cite>Tab简约风格</cite></a></li>
+  <li><a href="#card"><cite>Tab卡片风格</cite></a></li>
+  <li><a href="#rwd"><cite>Tab响应式</cite></a></li>
+  <li><a href="#del"><cite>带删除的Tab</cite></a></li>
+  <li><a href="#layid"><cite>ID焦点定位</cite></a></li>
+  <li><a href="../modules/element.html"><cite>相关动态操作</cite></a></li>
+</ul>
+<div class="layui-main site-inline">
+  
+  <div class="site-tree">
+  <!--
+  <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+    <select lay-filter="tabVersion">
+      <option value="new">2.x</option>
+      <option value="v1">1.x</option>
+    </select>
+  </div>
+  -->
+  <ul class="layui-tree">
+  
+    <li><h2>基础说明</h2></li>
+  
+    <li class="site-tree-noicon ">
+      <a href="../index.html">
+        <cite>开始使用</cite>
+        <em>Getting Started</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/infrastructure.html">
+        <cite>底层方法</cite>
+        <em>基础支撑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/element.html">
+        <cite>页面元素</cite>
+        <em>规范 / 公共类 / 属性</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/modules.html">
+        <cite>模块规范</cite>
+        <em>使用 / 扩展</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/faq.html">
+        <cite>常见问题</cite>
+        <em>FAQ</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/changelog.html">
+        <cite>更新日志</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -4px;"></span>
+        
+      </a>
+    </li>
+    
+    <li><h2>页面元素</h2></li>
+    
+    
+    <li class="site-tree-noicon ">
+      <a href="layout.html">
+        <cite>布局</cite>
+        <em>栅格 / 后台布局</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="color.html">
+        <cite>颜色</cite>
+        <em>主题色设计感 / 内置背景色</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="icon.html">
+        <cite>图标</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>字体图标</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="anim.html">
+        <cite>动画</cite>
+        <em>内置 CSS3 动画</em>
+      </a>
+    </li>
+    
+    <li class="site-tree-noicon ">
+      <a href="button.html">
+        <cite>按钮</cite>
+        <em>button 组</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="form.html">
+        <cite>表单</cite>
+        <em>form 元素集合</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="nav.html">
+        <cite>导航</cite>
+        <em>菜单 / 面包屑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon layui-this">
+      <a href="tab.html">
+        <cite>选项卡</cite>
+        <em>Tabs 切换</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="progress.html">
+        <cite>进度条</cite>
+        <em>progress</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="panel.html">
+        <cite>面板</cite>
+        <em>折叠 / 手风琴</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="table.html">
+        <cite>表格</cite>
+        <em>静态 table</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="badge.html">
+        <cite>徽章</cite>
+        <em>小圆点 / 小边框</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="timeline.html">
+        <cite>时间线</cite>
+        <em>timeline</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="auxiliar.html">
+        <cite>辅助</cite>
+        <em>引用 / 字段集 / 横线等</em>
+      </a>
+    </li>
+   
+    
+    <li><h2>内置模块</h2></li>
+    
+    <li class="">
+      <a href="../modules/layer.html">
+        <i class="layui-icon" style="top: 3px;">&#xe638;</i><cite>弹出层</cite>
+        <em>layer</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/laydate.html">
+        <i class="layui-icon" style="top: 3px;">&#xe637;</i><cite>日期与时间选择</cite>
+        <em>laydate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/laypage.html">
+        <i class="layui-icon" style="top: 2px;">&#xe633;</i><cite>分页</cite>
+        <em>laypage</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/laytpl.html">
+        <i class="layui-icon" style="top: 3px;">&#xe628;</i><cite>模板引擎</cite>
+        <em>laytpl</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/table.html">
+        <i class="layui-icon" style="top: 4px; font-size: 24px; margin-right: -4px;">&#xe62d;</i>
+        <cite>数据表格</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>table</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/form.html">
+        <i class="layui-icon" style="top: 2px;">&#xe63c;</i>
+        <cite>表单</cite>
+        <em>form</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/upload.html">
+        <i class="layui-icon" style="font-size: 18px;">&#xe62f;</i>
+        <cite>文件上传</cite>
+        <em>upload</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/transfer.html">
+        <i class="layui-icon layui-icon-transfer" style="font-size: 18px; top: 2px;"></i>
+        <cite>穿梭框</cite>
+        <em>transfer</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="../modules/tree.html">
+        <i class="layui-icon" style="top: 2px;">&#xe62e;</i>
+        <cite>树形组件</cite>
+        <em>tree</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="../modules/colorpicker.html">
+        <i class="layui-icon layui-icon-theme" style="top: 1px; font-size: 18px;"></i>
+        <cite>颜色选择器</cite>
+        <em>colorpicker</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/element.html">
+        <i class="layui-icon" style="top: 1px; font-size: 18px;">&#xe62a;</i>
+        <cite>常用元素操作</cite>
+        <em>element</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/slider.html">
+        <i class="layui-icon layui-icon-slider" style="top: 1px; font-size: 18px;"></i>
+        <cite>滑块</cite>
+        <em>slider</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/rate.html">
+        <i class="layui-icon" style="top: 1px; font-size: 22px;">&#xe67b;</i>
+        <cite>评分</cite>
+        <em>rate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/carousel.html">
+        <i class="layui-icon" style="top: 2px;">&#xe634;</i>
+        <cite>轮播</cite>
+        <em>carousel</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="../modules/flow.html">
+        <i class="layui-icon">&#xe636;</i>
+        <cite>流加载</cite>
+        <em>flow</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/util.html">
+        <i class="layui-icon">&#xe631;</i>
+        <cite>工具集</cite>
+        <em>util</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="../modules/code.html">
+        <i class="layui-icon" style="top: 1px;">&#xe635;</i>
+        <cite>代码文本行修饰</cite>
+        <em>code</em>
+      </a>
+    </li>
+  </ul>
+</div>
+
+  
+  <div class="site-content">
+    <h1 class="site-h1">Tab选项卡 - 页面元素</h1>
+    <blockquote class="site-text layui-elem-quote">
+      导航菜单可应用于头部和侧边，Tab选项卡提供多套风格，支持响应式，支持删除选项卡等功能。面包屑结构简单，支持自定义分隔符。
+    </blockquote>
+    <blockquote class="site-text layui-elem-quote">
+      依赖加载组件：<a href="../modules/element.html">element</a>
+      <span>（请注意：必须加载element模块，相关功能才能正常使用，详见：内置组件 - 常用元素操作）</span></blockquote>
+    
+    
+
+<div style="margin: 15px 0; text-align: center; background-color: #F2F2F2;">
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="9841027833"></ins>
+</div>
+
+
+    
+    
+    <div class="site-title">
+      <fieldset><legend><a name="default">默认Tab选项卡</a></legend></fieldset>
+    </div>    
+    <div class="site-text">
+      <p>
+        Tab广泛应用于Web页面，因此我们也对其进行了良好的支持。Layui内置多种Tab风格，支持删除选项卡、并提供响应式支持。
+        <br>这是一个最基本的例子：
+      </p>
+      <div class="layui-tab" style="margin: 30px 0;">
+        <ul class="layui-tab-title">
+          <li class="layui-this">网站设置</li>
+          <li>用户管理</li>
+          <li>权限分配</li>
+          <li>商品管理</li>
+          <li>订单管理</li>
+        </ul>
+        <div class="layui-tab-content">
+          <div class="layui-tab-item layui-show"> 
+            <blockquote class="layui-elem-quote">如果需要对Tab进行外部新增、删除、切换等操作，请移步到“内置组件-常用元素操作”页面中查阅：基础方法</blockquote>
+          </div>
+          <div class="layui-tab-item">内容2</div>
+          <div class="layui-tab-item">内容3</div>
+          <div class="layui-tab-item">内容4</div>
+          <div class="layui-tab-item">内容5</div>
+        </div>
+      </div>
+      <pre class="layui-code" lay-title="对应的HTML结构">
+&lt;div class=&quot;layui-tab&quot;&gt;
+  &lt;ul class=&quot;layui-tab-title&quot;&gt;
+    &lt;li class=&quot;layui-this&quot;&gt;网站设置&lt;/li&gt;
+    &lt;li&gt;用户管理&lt;/li&gt;
+    &lt;li&gt;权限分配&lt;/li&gt;
+    &lt;li&gt;商品管理&lt;/li&gt;
+    &lt;li&gt;订单管理&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;layui-tab-content&quot;&gt;
+    &lt;div class=&quot;layui-tab-item layui-show&quot;&gt;内容1&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;内容2&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;内容3&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;内容4&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;内容5&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+&lt;script&gt;
+//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+layui.use('element', function(){
+  var element = layui.element;
+  
+  //…
+});
+&lt;/script&gt;
+      </pre>
+    </div>
+    
+    <div class="site-title">
+      <fieldset><legend><a name="brief">Tab简洁风格</a></legend></fieldset>
+    </div>  
+    <div class="site-text">
+      <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin: 0 0 20px;">
+        <ul class="layui-tab-title">
+          <li class="layui-this">网站设置</li>
+          <li>用户管理</li>
+          <li>权限分配</li>
+          <li>商品管理</li>
+          <li>订单管理</li>
+        </ul>
+      </div>
+      <pre class="layui-code" lay-title="对应的HTML结构">
+&lt;div class=&quot;layui-tab layui-tab-brief&quot; lay-filter=&quot;docDemoTabBrief&quot;&gt;
+  &lt;ul class=&quot;layui-tab-title&quot;&gt;
+    &lt;li class=&quot;layui-this&quot;&gt;网站设置&lt;/li&gt;
+    &lt;li&gt;用户管理&lt;/li&gt;
+    &lt;li&gt;权限分配&lt;/li&gt;
+    &lt;li&gt;商品管理&lt;/li&gt;
+    &lt;li&gt;订单管理&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;layui-tab-content&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;      
+      </pre>
+      <p>通过追加class：<em>layui-tab-brief</em> 来设定简洁风格。<br>值得注意的是，如果存在 <em>layui-tab-item</em> 的内容区域，在切换时自动定位到对应内容。如果不存在内容区域，则不会定位到对应内容。你通常需要设置过滤器，通过 <em>element</em>模块的监听tab事件来进行切换操作。详见文档左侧【内置组件 - 基本元素操作 element】</p>
+    </div>
+    
+    <div class="site-title">
+      <fieldset><legend><a name="card">Tab卡片风格</a></legend></fieldset>
+    </div>  
+    <div class="site-text">
+      <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+          <li class="layui-this">网站设置</li>
+          <li>用户管理</li>
+          <li>权限分配</li>
+          <li>商品管理</li>
+          <li>订单管理</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 100px;">
+          <div class="layui-tab-item layui-show">1</div>
+          <div class="layui-tab-item">2</div>
+          <div class="layui-tab-item">3</div>
+          <div class="layui-tab-item">4</div>
+          <div class="layui-tab-item">5</div>
+          <div class="layui-tab-item">6</div>
+        </div>
+      </div>
+      <pre class="layui-code" lay-title="对应的HTML结构">
+&lt;div class=&quot;layui-tab layui-tab-card&quot;&gt;
+  &lt;ul class=&quot;layui-tab-title&quot;&gt;
+    &lt;li class=&quot;layui-this&quot;&gt;网站设置&lt;/li&gt;
+    &lt;li&gt;用户管理&lt;/li&gt;
+    &lt;li&gt;权限分配&lt;/li&gt;
+    &lt;li&gt;商品管理&lt;/li&gt;
+    &lt;li&gt;订单管理&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;layui-tab-content&quot; style=&quot;height: 100px;&quot;&gt;
+    &lt;div class=&quot;layui-tab-item layui-show&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;2&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;4&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;5&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;6&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+      <p>通过追加class：<em>layui-tab-card</em>来设定卡片风格</p>
+    </div>
+    
+    <div class="site-title">
+      <fieldset><legend><a name="rwd">Tab响应式</a></legend></fieldset>
+    </div>  
+    <div class="site-text">
+      <p>当容器的宽度不足以显示全部的选项时，即会自动出现展开图标，如下以卡片风格为例（注意：所有Tab风格都支持响应式）：</p>
+      <div style="text-align: center;">
+        <div class="layui-tab layui-tab-card layui-inline" style="margin-left: 20px; width: 363px;">
+          <ul class="layui-tab-title">
+            <li class="layui-this">网站设置</li>
+            <li>用户管理</li>
+            <li>权限分配</li>
+            <li>商品管理</li>
+            <li>订单管理</li>
+          </ul>
+          <div class="layui-tab-content" style="height: 100px;">
+            <div class="layui-tab-item layui-show">1</div>
+            <div class="layui-tab-item">2</div>
+            <div class="layui-tab-item">3</div>
+            <div class="layui-tab-item">4</div>
+            <div class="layui-tab-item">5</div>
+            <div class="layui-tab-item">6</div>
+          </div>
+        </div>
+      </div>  
+      <p>额，感觉像是打了个小酱油。而事实上在自适应的页面中（不固宽），它的意义才会呈现。</p>
+    </div>
+    
+    <div class="site-title">
+      <fieldset><legend><a name="del">带删除的Tab</a></legend></fieldset>
+    </div>  
+    <div class="site-text">
+      <p>你可以对父层容器设置属性 <em>lay-allowClose="true"</em> 来允许Tab选项卡被删除</p>
+      <div class="layui-tab" lay-allowClose="true" style="margin: 20px 0;">
+        <ul class="layui-tab-title">
+          <li class="layui-this">网站设置</li>
+          <li>用户基本管理</li>
+          <li>权限分配</li>
+          <li>全部历史商品管理文字长一点试试</li>
+          <li>订单管理</li>
+        </ul>
+        <div class="layui-tab-content">
+          <div class="layui-tab-item layui-show">1</div>
+          <div class="layui-tab-item">2</div>
+          <div class="layui-tab-item">3</div>
+          <div class="layui-tab-item">4</div>
+          <div class="layui-tab-item">5</div>
+          <div class="layui-tab-item">6</div>
+        </div>
+      </div>
+      <pre class="layui-code" lay-title="对应的HTML结构">
+&lt;div class=&quot;layui-tab&quot; lay-allowClose=&quot;true&quot;&gt;
+  &lt;ul class=&quot;layui-tab-title&quot;&gt;
+    &lt;li class=&quot;layui-this&quot;&gt;网站设置&lt;/li&gt;
+    &lt;li&gt;用户基本管理&lt;/li&gt;
+    &lt;li&gt;权限分配&lt;/li&gt;
+    &lt;li&gt;全部历史商品管理文字长一点试试&lt;/li&gt;
+    &lt;li&gt;订单管理&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;layui-tab-content&quot;&gt;
+    &lt;div class=&quot;layui-tab-item layui-show&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;2&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;4&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;5&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;6&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+      <p>与默认相比没有什么特别的结构，就是多了个属性 <em>lay-allowClose="true"</em></p>      
+    </div>
+    
+    <div class="site-title">
+      <fieldset><legend><a name="layid">ID焦点定位</a></legend></fieldset>
+    </div>  
+    <div class="site-text">
+      <p>你可以通过对选项卡设置属性 <em>lay-id="xxx"</em> 来作为唯一的匹配索引，以用于外部的定位切换，如后台的左侧导航、以及页面地址 hash的匹配。</p>
+      <pre class="layui-code" lay-title="对应的HTML结构">
+&lt;div class=&quot;layui-tab&quot; lay-filter=&quot;test1&quot;&gt;
+  &lt;ul class=&quot;layui-tab-title&quot;&gt;
+    &lt;li class=&quot;layui-this&quot; <a>lay-id="111"</a> &gt;文章列表&lt;/li&gt;
+    &lt;li <a>lay-id="222"</a>&gt;发送信息&lt;/li&gt;
+    &lt;li <a>lay-id="333"</a>&gt;权限分配&lt;/li&gt;
+    &lt;li <a>lay-id="444"</a>&gt;审核&lt;/li&gt;
+    &lt;li <a>lay-id="555"</a>&gt;订单管理&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;layui-tab-content&quot;&gt;
+    &lt;div class=&quot;layui-tab-item layui-show&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;2&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;4&lt;/div&gt;
+    &lt;div class=&quot;layui-tab-item&quot;&gt;5&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+      <p>属性 lay-id 是扮演这项功能的主要角色，它是动态操作的重要凭据，如：</p>  
+      <pre class="layui-code">
+&lt;script&gt;
+layui.use('element', function(){
+  var element = layui.element;
+  
+  //获取hash来切换选项卡，假设当前地址的hash为lay-id对应的值
+  var layid = location.hash.replace(/^#test1=/, '');
+  element.tabChange('test1', layid); //假设当前地址为：http://a.com#test1=222，那么选项卡会自动切换到“发送消息”这一项
+  
+  //监听Tab切换，以改变地址hash值
+  element.on('tab(test1)', function(){
+    location.hash = 'test1='+ this.getAttribute('lay-id');
+  });
+});
+&lt;/script&gt;      
+      </pre>
+      <p>同样的还有增加选项卡和删除选项卡，都需要用到 lay-id，更多动态操作请阅读：<a href="../modules/element.html">element模块</a></p>  
+    </div>
+    
+    <div class="site-title">
+      <fieldset><legend><a name="other">提示</a></legend></fieldset>
+    </div>
+    <div class="site-text">
+      <p>无论是导航、还是Tab，都需依赖 <em>element</em>模块，大部分行为都是在加载完该模块后自动完成的，但一些交互操作，如Tab事件监听等，需按照场景选择性使用。你可以移步文档左侧【内置组件 - 基本元素操作 element】了解详情 </p>
+    </div>
+    
+    <div class="layui-elem-quote">
+  <p>layui - 用心与你沟通</p>
+</div>
+    
+  </div>
+</div>
+  
+<div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <p>&copy; 2021 <a href="../../index.html">layui.com</a> MIT license</p>
+    <p>
+      <a href="../../about/disclaimer.html" target="_blank">免责声明</a>
+      <a href="../../about/relatedlinks.html" target="_blank">友链</a>
+      <a href="javascript:;"  site-event="weixinmp">公众号</a>
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+    <div class="site-union">
+      <p class="site-union-desc">
+        <span>
+          感谢以下平台提供云加速支持
+        </span>
+      </p>
+      <p>    
+        <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+          <img src="../../../res.layui.com/static/images/other/upyun.png?t=1" alt="upyun">
+        </a>    
+        <a href="https://www.maoyun.com/?from=layui" target="_blank" rel="nofollow" sponsor="maoyun">
+          <img src="../../../cdn.layui.com/upload/2019_5/168_1559291577683_9348.png" alt="maoyun">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+window.global = {
+  pageType: 'doc'
+  ,preview: function(){
+    var preview = document.getElementById('LAY_preview');
+    return preview ? preview.innerHTML : '';
+  }()
+};
+</script>
+<script async src="../../../pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+ 
+<script src="../../../res.layui.com/layui/dist/layui.js?t=1616653625022" charset="utf-8"></script>
+<script>
+layui.config({
+  base: '../../../res.layui.com/static/lay/modules/layui/'
+  ,version: '1616653625022'
+}).use('global');
+</script>
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../hm.baidu.com/hmd4f2.js?d214947968792b839fd669a4decaaffc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+layui.use(['element', 'layer'], function(){
+  var element = layui.element
+  ,layer = layui.layer;
+  
+  element.on('tab(docDemoTabBrief)', function(data){
+    layer.msg('切到到了'+ data.index + '：' + this.innerHTML);
+  });
+});
+</script>
+</body>
+
+<!-- Mirrored from www.layui.com/doc/element/tab.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:08 GMT -->
+</html>

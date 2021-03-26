@@ -1,0 +1,673 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.layui.com/doc/modules/util.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>工具集文档 - Layui</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <script>
+  ;!function(){self!==parent&&(location.href="http://www.baidu.com/")}();
+  </script>
+  <link rel="stylesheet" href="../../../res.layui.com/layui/dist/css/layui.css?t=1616653625022"  media="all">
+  <link rel="stylesheet" href="../../../res.layui.com/static/css/global.css?t=1616653625022-19" media="all">
+</head>
+<body>
+
+
+
+<div class="layui-header header header-doc" spring>
+  <div class="layui-main">
+    <a class="logo" href="../../index.html">
+      <img src="../../../res.layui.com/static/images/layui/logo.png" alt="layui">
+    </a>
+    <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+    <ul class="layui-nav">
+      <li class="layui-nav-item layui-this">
+        <a href="../index.html">文档</a> 
+      </li>
+      <li class="layui-nav-item ">
+        <a href="../../demo/index.html">示例</a>
+      </li>
+      
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <!--<span class="layui-badge-dot" style="left:0; right: auto; margin: -4px 0 0 5px;"></span>--> 
+          周边
+        </a>
+        <dl class="layui-nav-child" style="left: auto; right: -22px; text-align: center;">  
+          <dd class="layui-hide-sm layui-show-xs" lay-unselect>
+            <a href="https://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">问题反馈</a>
+            <hr>
+          </dd>
+          
+          <dd lay-unselect><a href="../../alone.html" target="_blank" lay-unselect>独立组件</a></dd>
+          <dd lay-unselect><a href="http://fly.layui.com/extend/" target="_blank">扩展组件</a></dd>
+          
+          
+          <!--
+          <dd lay-unselect>
+            <a href="https://fly.layui.com/jump/txyhot/" target="_blank" id="layui-spm-event-aliyun">
+              腾讯云特惠 
+              <span class="layui-badge-dot" style="margin-top: -5px;"></span>
+            </a>
+          </dd>
+          -->
+        </dl>
+      </li>
+      
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="http://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
+      </li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+<ul class="site-dir">
+  <li><a href="#fixbar"><cite>固定块</cite></a></li>
+  <li><a href="#countdown"><cite>倒计时</cite></a></li>
+  <li><a href="#method"><cite>其它方法</cite>  <span class="layui-badge-dot"></span></a></li>
+</ul>
+<div class="layui-main site-inline">
+  <div class="site-tree">
+  <!--
+  <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+    <select lay-filter="tabVersion">
+      <option value="new">2.x</option>
+      <option value="v1">1.x</option>
+    </select>
+  </div>
+  -->
+  <ul class="layui-tree">
+  
+    <li><h2>基础说明</h2></li>
+  
+    <li class="site-tree-noicon ">
+      <a href="../index.html">
+        <cite>开始使用</cite>
+        <em>Getting Started</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/infrastructure.html">
+        <cite>底层方法</cite>
+        <em>基础支撑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/element.html">
+        <cite>页面元素</cite>
+        <em>规范 / 公共类 / 属性</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/modules.html">
+        <cite>模块规范</cite>
+        <em>使用 / 扩展</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/faq.html">
+        <cite>常见问题</cite>
+        <em>FAQ</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/changelog.html">
+        <cite>更新日志</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -4px;"></span>
+        
+      </a>
+    </li>
+    
+    <li><h2>页面元素</h2></li>
+    
+    
+    <li class="site-tree-noicon ">
+      <a href="../element/layout.html">
+        <cite>布局</cite>
+        <em>栅格 / 后台布局</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/color.html">
+        <cite>颜色</cite>
+        <em>主题色设计感 / 内置背景色</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/icon.html">
+        <cite>图标</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>字体图标</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/anim.html">
+        <cite>动画</cite>
+        <em>内置 CSS3 动画</em>
+      </a>
+    </li>
+    
+    <li class="site-tree-noicon ">
+      <a href="../element/button.html">
+        <cite>按钮</cite>
+        <em>button 组</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/form.html">
+        <cite>表单</cite>
+        <em>form 元素集合</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/nav.html">
+        <cite>导航</cite>
+        <em>菜单 / 面包屑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/tab.html">
+        <cite>选项卡</cite>
+        <em>Tabs 切换</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/progress.html">
+        <cite>进度条</cite>
+        <em>progress</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/panel.html">
+        <cite>面板</cite>
+        <em>折叠 / 手风琴</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/table.html">
+        <cite>表格</cite>
+        <em>静态 table</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/badge.html">
+        <cite>徽章</cite>
+        <em>小圆点 / 小边框</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/timeline.html">
+        <cite>时间线</cite>
+        <em>timeline</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/auxiliar.html">
+        <cite>辅助</cite>
+        <em>引用 / 字段集 / 横线等</em>
+      </a>
+    </li>
+   
+    
+    <li><h2>内置模块</h2></li>
+    
+    <li class="">
+      <a href="layer.html">
+        <i class="layui-icon" style="top: 3px;">&#xe638;</i><cite>弹出层</cite>
+        <em>layer</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laydate.html">
+        <i class="layui-icon" style="top: 3px;">&#xe637;</i><cite>日期与时间选择</cite>
+        <em>laydate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laypage.html">
+        <i class="layui-icon" style="top: 2px;">&#xe633;</i><cite>分页</cite>
+        <em>laypage</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laytpl.html">
+        <i class="layui-icon" style="top: 3px;">&#xe628;</i><cite>模板引擎</cite>
+        <em>laytpl</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="table.html">
+        <i class="layui-icon" style="top: 4px; font-size: 24px; margin-right: -4px;">&#xe62d;</i>
+        <cite>数据表格</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>table</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="form.html">
+        <i class="layui-icon" style="top: 2px;">&#xe63c;</i>
+        <cite>表单</cite>
+        <em>form</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="upload.html">
+        <i class="layui-icon" style="font-size: 18px;">&#xe62f;</i>
+        <cite>文件上传</cite>
+        <em>upload</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="transfer.html">
+        <i class="layui-icon layui-icon-transfer" style="font-size: 18px; top: 2px;"></i>
+        <cite>穿梭框</cite>
+        <em>transfer</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="tree.html">
+        <i class="layui-icon" style="top: 2px;">&#xe62e;</i>
+        <cite>树形组件</cite>
+        <em>tree</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="colorpicker.html">
+        <i class="layui-icon layui-icon-theme" style="top: 1px; font-size: 18px;"></i>
+        <cite>颜色选择器</cite>
+        <em>colorpicker</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="element.html">
+        <i class="layui-icon" style="top: 1px; font-size: 18px;">&#xe62a;</i>
+        <cite>常用元素操作</cite>
+        <em>element</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="slider.html">
+        <i class="layui-icon layui-icon-slider" style="top: 1px; font-size: 18px;"></i>
+        <cite>滑块</cite>
+        <em>slider</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="rate.html">
+        <i class="layui-icon" style="top: 1px; font-size: 22px;">&#xe67b;</i>
+        <cite>评分</cite>
+        <em>rate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="carousel.html">
+        <i class="layui-icon" style="top: 2px;">&#xe634;</i>
+        <cite>轮播</cite>
+        <em>carousel</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="flow.html">
+        <i class="layui-icon">&#xe636;</i>
+        <cite>流加载</cite>
+        <em>flow</em>
+      </a>
+    </li>
+    <li class="layui-this">
+      <a href="util.html">
+        <i class="layui-icon">&#xe631;</i>
+        <cite>工具集</cite>
+        <em>util</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="code.html">
+        <i class="layui-icon" style="top: 1px;">&#xe635;</i>
+        <cite>代码文本行修饰</cite>
+        <em>code</em>
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <div class="site-content">
+    <h1 class="site-h1"><i class="layui-icon">&#xe631;</i> 工具集文档 - layui.util</h1>
+    <blockquote class="site-text layui-elem-quote">
+      我们将一些工具性元素放入 <em>util</em> 模块中，以供选择性使用。其内部由多个小工具组件组成，他们也许不是必须的，但很多时候却能为你的页面提供良好的辅助作用。
+    </blockquote>
+     <blockquote class="site-text layui-elem-quote">
+      模块加载名称：<em>util</em>
+    </blockquote>
+    
+    
+
+<div style="margin: 15px 0; text-align: center; background-color: #F2F2F2;">
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="9841027833"></ins>
+</div>
+
+
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="fixbar">固定块</a></legend>
+    </fieldset> 
+    <div class="site-text">
+      <p>
+        看到页面右下角的那个包含top的bar了吗？对，就是她。她通常会出现在那个固定位置，由两个可选的bar和一个默认必选的TopBar组成。
+      </p>
+      <p>
+        语法：<em>util.fixbar(options)</em>
+        <br>其中参数 <em>options</em> 是一个对象，可支持的key如下表：
+      </p>
+      <table class="layui-table">
+        <colgroup>
+          <col width="120">
+          <col width="120">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>描述</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr>
+            <td>bar1</td>
+            <td>Boolean/String</td>
+            <td>默认false。如果值为true，则显示第一个bar，带有一个默认图标。<br>如果值为图标字符，则显示第一个bar，并覆盖默认图标</td>
+          </tr>
+          <tr>
+            <td>bar2</td>
+            <td>Boolean/String</td>
+            <td>默认false。如果值为true，则显示第二个bar，带有一个默认图标。<br>如果值为图标字符，则显示第二个bar，并覆盖默认图标</td>
+          </tr>
+          <tr>
+            <td>bgcolor</td>
+            <td>String</td>
+            <td>自定义区块背景色</td>
+          </tr>
+          <tr>
+            <td>showHeight</td>
+            <td>Number</td>
+            <td>用于控制出现TOP按钮的滚动条高度临界值。默认：200</td>
+          </tr>
+          <tr>
+            <td>css</td>
+            <td>Object</td>
+            <td>你可以通过重置bar的位置，比如 css: {right: 100, bottom: 100}</td>
+          </tr>
+          <tr>
+            <td>click</td>
+            <td>Function</td>
+            <td>点击bar的回调，函数返回一个type参数，用于区分bar类型。<br>支持的类型有：bar1、bar2、top</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+      <pre class="layui-code" lay-title="例子">
+layui.use('util', function(){
+  var util = layui.util;
+  
+  //执行
+  util.fixbar({
+    bar1: true
+    ,click: function(type){
+      console.log(type);
+      if(type === 'bar1'){
+        alert('点击了bar1')
+      }
+    }
+  });
+});
+      </pre>
+    </div>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="countdown">倒计时</a></legend>
+    </fieldset> 
+    <div class="site-text">
+      <p>这是一个精致的封装，它并不负责 UI 元素的呈现，而仅仅只是返回倒计时的数据，这意味着你可以将它应用在任何倒计时相关的业务中。</p>
+      <p>
+        语法：<em>util.countdown(endTime, serverTime, callback)</em>
+      </p>
+      <table class="layui-table">
+        <colgroup>
+          <col width="120">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>参数</th>
+            <th>说明</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr>
+            <td>endTime</td>
+            <td>结束时间戳或Date对象，如：4073558400000，或：new Date(2099,1,1).</td>
+          </tr>
+          <tr>
+            <td>serverTime</td>
+            <td>当前服务器时间戳或Date对象</td>
+          </tr>
+          <tr>
+            <td>callback</td>
+            <td>
+              回调函数。如果倒计时尚在运行，则每一秒都会执行一次。并且返回三个参数：
+              <em>date</em>（包含天/时/分/秒的对象）、 <em>serverTime</em>（当前服务器时间戳或Date对象）, <em>timer</em>（计时器返回的ID值，用于clearTimeout）
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pre class="layui-code" lay-title="例子">
+&lt;div id="test">&lt;/div>
+ 
+&lt;script&gt;
+layui.use('util', function(){
+  var util = layui.util;
+  
+  //示例
+  var endTime = new Date(2099,1,1).getTime() //假设为结束日期
+  ,serverTime = new Date().getTime(); //假设为当前服务器时间，这里采用的是本地时间，实际使用一般是取服务端的
+   
+  util.countdown(endTime, serverTime, function(date, serverTime, timer){
+    var str = date[0] + '天' + date[1] + '时' +  date[2] + '分' + date[3] + '秒';
+    layui.$('#test').html('距离2099年1月1日还有：'+ str);
+  });
+});
+&lt;/script&gt;
+      </pre>
+    </div>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="method">其它方法</a></legend>
+    </fieldset> 
+    <table class="layui-table">
+      <colgroup>
+        <col width="220">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>方法</th>
+          <th>说明</th>
+        </tr> 
+      </thead>
+      <tbody>
+        <tr>
+          <td>util.timeAgo(time, onlyDate)</td>
+          <td>
+            某个时间在当前时间的多久前。
+            <br>参数 <em>time</em>：即为某个时间的时间戳或日期对象
+            <br>参数 <em>onlyDate</em>：是否在超过30天后，只返回日期字符，而不返回时分秒
+            <br>
+            <br>如果在3分钟以内，返回：<em>刚刚</em>
+            <br>如果在30天以内，返回：<em>若干分钟前</em>、<em>若干小时前</em>、<em>若干天前</em>，如：5分钟前
+            <br>如果在30天以上，返回：<em>日期字符</em>，如：2017-01-01
+          </td>
+        </tr>
+        <tr>
+          <td>util.toDateString(time, format)</td>
+          <td>
+            转化时间戳或日期对象为日期格式字符
+            <br>参数 <em>time</em>：可以是日期对象，也可以是毫秒数
+            <br>参数 <em>format</em>：日期字符格式（默认：yyyy-MM-dd HH:mm:ss），可随意定义，如：yyyy年MM月dd日
+          </td>
+        </tr>
+        <tr>
+          <td>util.digit(num, length)</td>
+          <td>
+            数字前置补零
+            <br>参数 <em>num</em>：原始数字
+            <br>参数 <em>length</em>：数字长度，如果原始数字长度小于 length，则前面补零，如：util.digit(7, 3) //007
+          </td>
+        </tr>
+        <tr>
+          <td>util.escape(str)</td>
+          <td>
+            转义 xss 字符
+            <br>参数 <em>str</em>：任意字符
+          </td>
+        </tr>
+        <tr>
+          <td>util.event(attr, obj, eventType)</td>
+          <td>
+            用于更好地批量处理事件。
+            <br>参数 <em>attr</em>：绑定需要监听事件的元素属性
+            <br>参数 <em>obj</em>：事件回调链
+            <br>参数 <em>eventType</em>：事件类型（默认 click）
+            <br><br>示例：
+            <pre class="layui-code">
+HTML：
+&lt;button class="layui-btn" lay-active="e1">事件1&lt;/button>
+&lt;button class="layui-btn" lay-active="e2">事件2&lt;/button>
+&lt;button class="layui-btn" lay-active="e3">事件3&lt;/button>
+ 
+JavaScript：
+&lt;script>
+layui.use('util', function(){
+  var util = layui.util;
+  
+  //处理属性 为 lay-active 的所有元素事件
+  util.event('lay-active', {
+    e1: function(){
+      alert('触发了事件1');
+    }
+    ,e2: function(){
+      alert('触发了事件2');
+    }
+    ,e3: function(){
+      alert('触发了事件3');
+    }
+  });
+});
+&lt;/script>
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="other">结语</a></legend>
+    </fieldset> 
+    <div class="site-text">
+      <p>工具模块往往应用在边边角角，将不定期增加。</p>
+    </div>
+    
+    <div class="layui-elem-quote">
+  <p>layui - 用心与你沟通</p>
+</div>
+    
+  </div>
+</div>
+  
+<div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <p>&copy; 2021 <a href="../../index.html">layui.com</a> MIT license</p>
+    <p>
+      <a href="../../about/disclaimer.html" target="_blank">免责声明</a>
+      <a href="../../about/relatedlinks.html" target="_blank">友链</a>
+      <a href="javascript:;"  site-event="weixinmp">公众号</a>
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+    <div class="site-union">
+      <p class="site-union-desc">
+        <span>
+          感谢以下平台提供云加速支持
+        </span>
+      </p>
+      <p>    
+        <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+          <img src="../../../res.layui.com/static/images/other/upyun.png?t=1" alt="upyun">
+        </a>    
+        <a href="https://www.maoyun.com/?from=layui" target="_blank" rel="nofollow" sponsor="maoyun">
+          <img src="../../../cdn.layui.com/upload/2019_5/168_1559291577683_9348.png" alt="maoyun">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+window.global = {
+  pageType: 'doc'
+  ,preview: function(){
+    var preview = document.getElementById('LAY_preview');
+    return preview ? preview.innerHTML : '';
+  }()
+};
+</script>
+<script async src="../../../pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+ 
+<script src="../../../res.layui.com/layui/dist/layui.js?t=1616653625022" charset="utf-8"></script>
+<script>
+layui.config({
+  base: '../../../res.layui.com/static/lay/modules/layui/'
+  ,version: '1616653625022'
+}).use('global');
+</script>
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../hm.baidu.com/hmd4f2.js?d214947968792b839fd669a4decaaffc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+
+<!-- Mirrored from www.layui.com/doc/modules/util.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:10 GMT -->
+</html>

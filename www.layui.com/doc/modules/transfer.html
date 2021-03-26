@@ -1,0 +1,701 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.layui.com/doc/modules/transfer.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<title>穿梭框组件文档 - Layui</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <script>
+  ;!function(){self!==parent&&(location.href="http://www.baidu.com/")}();
+  </script>
+  <link rel="stylesheet" href="../../../res.layui.com/layui/dist/css/layui.css?t=1616653624947"  media="all">
+  <link rel="stylesheet" href="../../../res.layui.com/static/css/global.css?t=1616653624947-19" media="all">
+</head>
+<body>
+
+
+
+<div class="layui-header header header-doc" spring>
+  <div class="layui-main">
+    <a class="logo" href="../../index.html">
+      <img src="../../../res.layui.com/static/images/layui/logo.png" alt="layui">
+    </a>
+    <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+    <ul class="layui-nav">
+      <li class="layui-nav-item layui-this">
+        <a href="../index.html">文档</a> 
+      </li>
+      <li class="layui-nav-item ">
+        <a href="../../demo/index.html">示例</a>
+      </li>
+      
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <!--<span class="layui-badge-dot" style="left:0; right: auto; margin: -4px 0 0 5px;"></span>--> 
+          周边
+        </a>
+        <dl class="layui-nav-child" style="left: auto; right: -22px; text-align: center;">  
+          <dd class="layui-hide-sm layui-show-xs" lay-unselect>
+            <a href="https://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">问题反馈</a>
+            <hr>
+          </dd>
+          
+          <dd lay-unselect><a href="../../alone.html" target="_blank" lay-unselect>独立组件</a></dd>
+          <dd lay-unselect><a href="http://fly.layui.com/extend/" target="_blank">扩展组件</a></dd>
+          
+          
+          <!--
+          <dd lay-unselect>
+            <a href="https://fly.layui.com/jump/txyhot/" target="_blank" id="layui-spm-event-aliyun">
+              腾讯云特惠 
+              <span class="layui-badge-dot" style="margin-top: -5px;"></span>
+            </a>
+          </dd>
+          -->
+        </dl>
+      </li>
+      
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="http://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
+      </li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+<ul class="site-dir">
+  <li><a href="#use"><cite>快速使用</cite></a></li>
+  <li><a href="#options"><cite>基础参数</cite></a></li>
+  <li><a href="#parseData"><cite>数据源格式解析</cite></a></li>
+  <li><a href="#onchange">左右穿梭的回调</a></li>
+  
+  <li><a href="#method"><cite>基础方法</cite></a></li>
+  <ul style="margin-left: 15px;">
+    <li><a href="#getData">获得右侧数据</a></li>
+    <li><a href="#reload">实例重载</a></li>
+  </ul>
+</ul>
+<div class="layui-main site-inline">
+  <div class="site-tree">
+  <!--
+  <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+    <select lay-filter="tabVersion">
+      <option value="new">2.x</option>
+      <option value="v1">1.x</option>
+    </select>
+  </div>
+  -->
+  <ul class="layui-tree">
+  
+    <li><h2>基础说明</h2></li>
+  
+    <li class="site-tree-noicon ">
+      <a href="../index.html">
+        <cite>开始使用</cite>
+        <em>Getting Started</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/infrastructure.html">
+        <cite>底层方法</cite>
+        <em>基础支撑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/element.html">
+        <cite>页面元素</cite>
+        <em>规范 / 公共类 / 属性</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/modules.html">
+        <cite>模块规范</cite>
+        <em>使用 / 扩展</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/faq.html">
+        <cite>常见问题</cite>
+        <em>FAQ</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../base/changelog.html">
+        <cite>更新日志</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -4px;"></span>
+        
+      </a>
+    </li>
+    
+    <li><h2>页面元素</h2></li>
+    
+    
+    <li class="site-tree-noicon ">
+      <a href="../element/layout.html">
+        <cite>布局</cite>
+        <em>栅格 / 后台布局</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/color.html">
+        <cite>颜色</cite>
+        <em>主题色设计感 / 内置背景色</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/icon.html">
+        <cite>图标</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>字体图标</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/anim.html">
+        <cite>动画</cite>
+        <em>内置 CSS3 动画</em>
+      </a>
+    </li>
+    
+    <li class="site-tree-noicon ">
+      <a href="../element/button.html">
+        <cite>按钮</cite>
+        <em>button 组</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/form.html">
+        <cite>表单</cite>
+        <em>form 元素集合</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/nav.html">
+        <cite>导航</cite>
+        <em>菜单 / 面包屑</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/tab.html">
+        <cite>选项卡</cite>
+        <em>Tabs 切换</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/progress.html">
+        <cite>进度条</cite>
+        <em>progress</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/panel.html">
+        <cite>面板</cite>
+        <em>折叠 / 手风琴</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/table.html">
+        <cite>表格</cite>
+        <em>静态 table</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/badge.html">
+        <cite>徽章</cite>
+        <em>小圆点 / 小边框</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/timeline.html">
+        <cite>时间线</cite>
+        <em>timeline</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="../element/auxiliar.html">
+        <cite>辅助</cite>
+        <em>引用 / 字段集 / 横线等</em>
+      </a>
+    </li>
+   
+    
+    <li><h2>内置模块</h2></li>
+    
+    <li class="">
+      <a href="layer.html">
+        <i class="layui-icon" style="top: 3px;">&#xe638;</i><cite>弹出层</cite>
+        <em>layer</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laydate.html">
+        <i class="layui-icon" style="top: 3px;">&#xe637;</i><cite>日期与时间选择</cite>
+        <em>laydate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laypage.html">
+        <i class="layui-icon" style="top: 2px;">&#xe633;</i><cite>分页</cite>
+        <em>laypage</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="laytpl.html">
+        <i class="layui-icon" style="top: 3px;">&#xe628;</i><cite>模板引擎</cite>
+        <em>laytpl</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="table.html">
+        <i class="layui-icon" style="top: 4px; font-size: 24px; margin-right: -4px;">&#xe62d;</i>
+        <cite>数据表格</cite>
+        
+          <span class="layui-badge-dot" style="position: relative; top: -2px; left: -3px;"></span>
+        
+        <em>table</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="form.html">
+        <i class="layui-icon" style="top: 2px;">&#xe63c;</i>
+        <cite>表单</cite>
+        <em>form</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="upload.html">
+        <i class="layui-icon" style="font-size: 18px;">&#xe62f;</i>
+        <cite>文件上传</cite>
+        <em>upload</em>
+      </a>
+    </li>
+    <li class="layui-this">
+      <a href="transfer.html">
+        <i class="layui-icon layui-icon-transfer" style="font-size: 18px; top: 2px;"></i>
+        <cite>穿梭框</cite>
+        <em>transfer</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="tree.html">
+        <i class="layui-icon" style="top: 2px;">&#xe62e;</i>
+        <cite>树形组件</cite>
+        <em>tree</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="colorpicker.html">
+        <i class="layui-icon layui-icon-theme" style="top: 1px; font-size: 18px;"></i>
+        <cite>颜色选择器</cite>
+        <em>colorpicker</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="element.html">
+        <i class="layui-icon" style="top: 1px; font-size: 18px;">&#xe62a;</i>
+        <cite>常用元素操作</cite>
+        <em>element</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="slider.html">
+        <i class="layui-icon layui-icon-slider" style="top: 1px; font-size: 18px;"></i>
+        <cite>滑块</cite>
+        <em>slider</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="rate.html">
+        <i class="layui-icon" style="top: 1px; font-size: 22px;">&#xe67b;</i>
+        <cite>评分</cite>
+        <em>rate</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="carousel.html">
+        <i class="layui-icon" style="top: 2px;">&#xe634;</i>
+        <cite>轮播</cite>
+        <em>carousel</em>
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="flow.html">
+        <i class="layui-icon">&#xe636;</i>
+        <cite>流加载</cite>
+        <em>flow</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="util.html">
+        <i class="layui-icon">&#xe631;</i>
+        <cite>工具集</cite>
+        <em>util</em>
+      </a>
+    </li>
+    <li class="">
+      <a href="code.html">
+        <i class="layui-icon" style="top: 1px;">&#xe635;</i>
+        <cite>代码文本行修饰</cite>
+        <em>code</em>
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <div class="site-content">
+    <h1 class="site-h1"><i class="layui-icon layui-icon-transfer"></i> 穿梭框组件文档 - layui.transfer</h1>
+    <blockquote class="layui-elem-quote layui-text">
+      穿梭框组件的初衷来源于 layui 社区的扩展组件平台，并且在 layui 2.5.0 的版本中开始登场。其适用的业务场景多样，不妨一试。
+    </blockquote>
+    <blockquote class="layui-elem-quote">
+      模块加载名称：<em>transfer</em>
+    </blockquote>
+    
+    
+
+<div style="margin: 15px 0; text-align: center; background-color: #F2F2F2;">
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="9841027833"></ins>
+</div>
+
+
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="use">快速使用</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>transfer 组件可以进行数据的交互筛选</p>
+      <pre class="layui-code" lay-title="layui.transfer小例子">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+  &lt;meta charset="utf-8">
+  &lt;title>穿梭框组件&lt;/title>
+  &lt;link rel="stylesheet" href="../src/css/layui.css">
+&lt;/head>
+&lt;body>
+  &lt;div id="test1">&lt;/div>
+  &lt;script src="../src/layui.js">&lt;/script>
+  &lt;script>
+  layui.use('transfer', function(){
+    var transfer = layui.transfer;
+   
+    //渲染
+    transfer.render({
+      elem: '#test1'  //绑定元素
+      ,data: [
+        {"value": "1", "title": "李白", "disabled": "", "checked": ""}
+        ,{"value": "2", "title": "杜甫", "disabled": "", "checked": ""}
+        ,{"value": "3", "title": "贤心", "disabled": "", "checked": ""}
+      ]
+      ,id: 'demo1' //定义索引
+    });
+  });
+  &lt;/script>
+&lt;/body>
+&lt;/html>
+      </pre>
+    </div> 
+ 
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="options">基础参数</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>目前 transfer 组件提供以下基础参数，可根据需要进行相应的设置</p>
+      <table class="layui-table">
+        <colgroup>
+          <col width="120">
+          <col>
+          <col width="120">
+          <col width="200">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>参数选项</th>
+            <th>说明</th>
+            <th>类型</th>
+            <th>默认值</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr>
+            <td>elem</td>
+            <td>指向容器选择器</td>
+            <td>String/Object</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>title</td>
+            <td>穿梭框上方标题</td>
+            <td>Array</td>
+            <td>['标题一', '标题二']</td>
+          </tr>
+          <tr>
+            <td>data</td>
+            <td>数据源</td>
+            <td>Array</td>
+            <td>[{}, {}, …]</td>
+          </tr>
+          <tr>
+            <td>parseData</td>
+            <td>用于对数据源进行格式解析</td>
+            <td>Function</td>
+            <td><a href="#parseData">详见数据源格式解析</a></td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>初始选中的数据（右侧列表）</td>
+            <td>Array</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            <td>设定实例唯一索引，用于基础方法传参使用。</td>
+            <td>String</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>showSearch</td>
+            <td>是否开启搜索</td>
+            <td>Boolean</td>
+            <td>false</td>
+          </tr>
+          <tr>
+            <td>width</td>
+            <td>定义左右穿梭框宽度</td>
+            <td>Number</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>height</td>
+            <td>定义左右穿梭框高度</td>
+            <td>Number</td>
+            <td>340</td>
+          </tr>
+          <tr>
+            <td>text</td>
+            <td>
+              自定义文本，如空数据时的异常提示等。
+              <pre class="layui-code">
+text: {
+  none: '无数据' //没有数据时的文案
+  ,searchNone: '无匹配数据' //搜索无匹配数据时的文案
+}             
+              </pre>
+            </td>
+            <td>Object</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>onchange</td>
+            <td>左右数据穿梭时的回调</td>
+            <td>Function</td>
+            <td><a href="#onchange">详见穿梭时的回调</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="parseData">数据源格式解析</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>
+        数据格式解析的回调函数，用于将任意数据格式解析成 transfer 组件规定的数据格式，以下是合法的数据格式如下：
+      </p>
+      
+      <pre class="layui-code" lay-title="合法的数据格式" lay-skin="notepad">
+[
+  {"value": "1", "title": "李白", "disabled": "", "checked": ""}
+  ,{"value": "2", "title": "杜甫", "disabled": "", "checked": ""}
+  ,{"value": "3", "title": "贤心", "disabled": "", "checked": ""}
+]
+      </pre>
+      
+      <p>然而很多时候你返回的数据格式可能并不符合规范，比如：</p>
+      <pre class="layui-code" lay-title="不符合规范的数据格式" lay-skin="notepad">
+[
+  {"id": "1", "name": "李白"}
+  ,{"id": "2", "name": "杜甫"}
+  ,{"id": "3", "name": "贤心"}
+]
+      </pre>
+      <p>那么您需要将其解析成 transfer 组件所规定的数据格式：</p>
+      <pre class="layui-code" lay-title="code">
+transfer.render({
+  elem: '#text1'
+  ,data: [
+    {"id": "1", "name": "李白"}
+    ,{"id": "2", "name": "杜甫"}
+    ,{"id": "3", "name": "贤心"}
+  ]
+  ,parseData: function(res){
+    return {
+      "value": res.id //数据值
+      ,"title": res.name //数据标题
+      ,"disabled": res.disabled  //是否禁用
+      ,"checked": res.checked //是否选中
+    }
+  }
+});
+      </pre>
+    </div>
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="onchange">左右穿梭的回调</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>当数据在左右穿梭时触发，回调返回当前被穿梭的数据</p>
+      <pre class="layui-code" lay-title="例子">
+transfer.render({
+  elem: '#text'
+  ,data: [] //数据源
+  ,onchange: function(data, index){
+    console.log(data); //得到当前被穿梭的数据
+    console.log(index); //如果数据来自左边，index 为 0，否则为 1
+  }
+});
+      </pre>
+    </div>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="method">基础方法</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>基础用法是组件关键组成部分，目前所开放的所有方法如下：</p>
+      <pre class="layui-code">
+var transfer = layui.transfer;
+ 
+transfer.set(options); //设定全局默认参数。options 即各项基础参数
+transfer.getData(id); //获得右侧数据
+transfer.reload(id, options); //重载实例
+    </div>
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="getData">获得右侧数据</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>穿梭框的右侧数据通常被认为是选中数据，因此你需要得到它并提交到后台。</p>
+      <pre class="layui-code" lay-title="例子">
+transfer.render({
+  elem: '#test'
+  ,data: []
+  ,id: 'demo1' //定义索引
+});
+ 
+//获得右侧数据
+var getData = transfer.getData('demo1'); 
+      </pre>
+    </div>
+    
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="reload">实例重载</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>重载一个已经创建的组件实例，被覆盖新的基础属性</p>
+      <pre class="layui-code" lay-title="例子">
+transfer.render({
+  elem: '#test'
+  ,data: []
+  ,id: 'demo1' //定义索引
+});
+ 
+ //可以重载所有基础参数
+transfer.reload('demo1', {
+  title: ['新列表1', '新列表2']
+});
+      </pre>
+    </div>
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="docend">结语</a></legend>
+    </fieldset>
+    <div class="site-text">
+      <p>穿梭框组件极易上手，在浩瀚的业务需求中，值得一用。</p>
+    </div>
+    
+    <div class="layui-elem-quote">
+  <p>layui - 用心与你沟通</p>
+</div>
+    
+  </div>
+</div>
+  
+<div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <p>&copy; 2021 <a href="../../index.html">layui.com</a> MIT license</p>
+    <p>
+      <a href="../../about/disclaimer.html" target="_blank">免责声明</a>
+      <a href="../../about/relatedlinks.html" target="_blank">友链</a>
+      <a href="javascript:;"  site-event="weixinmp">公众号</a>
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+    <div class="site-union">
+      <p class="site-union-desc">
+        <span>
+          感谢以下平台提供云加速支持
+        </span>
+      </p>
+      <p>    
+        <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+          <img src="../../../res.layui.com/static/images/other/upyun.png?t=1" alt="upyun">
+        </a>    
+        <a href="https://www.maoyun.com/?from=layui" target="_blank" rel="nofollow" sponsor="maoyun">
+          <img src="../../../cdn.layui.com/upload/2019_5/168_1559291577683_9348.png" alt="maoyun">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+window.global = {
+  pageType: 'doc'
+  ,preview: function(){
+    var preview = document.getElementById('LAY_preview');
+    return preview ? preview.innerHTML : '';
+  }()
+};
+</script>
+<script async src="../../../pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+ 
+<script src="../../../res.layui.com/layui/dist/layui.js?t=1616653624947" charset="utf-8"></script>
+<script>
+layui.config({
+  base: '../../../res.layui.com/static/lay/modules/layui/'
+  ,version: '1616653624947'
+}).use('global');
+</script>
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "../../../hm.baidu.com/hmd4f2.js?d214947968792b839fd669a4decaaffc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+
+<!-- Mirrored from www.layui.com/doc/modules/transfer.html by HTTrack Website Copier/3.x [XR&CO'2013], Fri, 26 Mar 2021 11:37:10 GMT -->
+</html>
